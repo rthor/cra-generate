@@ -48,7 +48,7 @@ mkpath(targetPath, err => {
 
   Object.keys(jsFiles).forEach(file => {
     let content = jsFiles[file]
-    if (useFlow) content = `@flow${os.EOL}${os.EOL}${content}`
+    if (useFlow) content = `// @flow${os.EOL}${os.EOL}${content}`
     saveFile(file, 'js', content)
   })
 
