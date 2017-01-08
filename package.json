@@ -1,0 +1,15 @@
+{
+  "name": "cra-generate",
+  "version": "1.0.0",
+  "description": "Scaffold react components for Create React App",
+  "main": "index.js",
+  "repository": "rthor/cra-generate",
+  "author": "rthor",
+  "license": "MIT",
+  "bin": {
+    "cra-generate": "./index.js"
+  },
+  "dependencies": {
+    "mkpath": "^1.0.0"
+  }
+}
