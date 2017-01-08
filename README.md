@@ -3,7 +3,7 @@
 Scaffold a React component.
 
 ```bash
-$ cra-generete awesome-component
+$ cra-generate awesome-component
 ```
 
 ## Options
