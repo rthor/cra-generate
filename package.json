@@ -1,7 +1,7 @@
 {
   "name": "cra-generate",
-  "version": "1.0.1",
-  "description": "Scaffold react components for Create React App",
+  "version": "2.0.0",
+  "description": "Scaffold react components",
   "main": "index.js",
   "repository": "rthor/cra-generate",
   "author": "rthor",
