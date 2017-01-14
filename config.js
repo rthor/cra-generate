@@ -12,7 +12,7 @@ try {
 const defaultOptions =  {
   directory: 'components',
   typeCheck: fs.existsSync(path.join(process.cwd(), '.flowconfig')) && 'flow',
-  fileFormat: 'paramCase',
+  fileFormat: 'pascalCase',
   componentFormat: 'pascalCase',
 }
 
