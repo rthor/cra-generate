@@ -8,8 +8,17 @@ $ cra-generate awesome-component
 
 ## Options
 
-- `--pure` / `-p` : Creates a pure component.
-- `--flow` / `-f` : Adds a flow comment to js files.
+```bash
+  Usage: cra-generate [options] <component>
+
+  Options:
+
+    -h, --help                 output usage information
+    -V, --version              output the version number
+    -f, --functional           create a functional component
+    -d, --directory [dir]      specify a directory for the component
+```
+
 
 ## License
 
