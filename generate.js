@@ -65,9 +65,9 @@ function implementTypeChecking(typeSystem, content) {
   }
 }
 
-function validTransform(transform) {
+function validTransform(key, transform) {
   if (!allowedNameTransforms.hasOwnProperty(transform)) {
-    console.log('Invalid component name transform')
+    console.log(`Invalid ${key} name transform`)
     console.log('  allowed transform functions are:')
     Object.keys(allowedNameTransforms).forEach(trf => {
       console.log(`  - ${chalk.cyan(trf)}`)
@@ -77,17 +77,20 @@ function validTransform(transform) {
 }
 
 function transformNames(component, fileFn, compFn) {
-  validTransform(fileFn)
-  validTransform(compFn)
+  validTransform('fileName', fileFn)
   const fileName = changeCase[fileFn](component)
+  validTransform('component', compFn)
   const componentName = changeCase[compFn](component)
   return { fileName, componentName }
 }
 
 function generate(component, options) {
-  const { fileName, componentName } = transformNames(component,
-    options.transform.fileName,
-    options.transform.component)
+  const {
+    fileName,
+    componentName
+  } = transformNames(component, options.fileFormat, options.componentFormat)
+
+  console.log(options.fileFormat, fileName, options.componentFormat, componentName)
   const componentPath = getComponentPath(componentName, options.directory, fileName)
 
   const scriptFiles =[

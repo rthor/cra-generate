@@ -3,37 +3,25 @@
 
 const commander = require('commander')
 const chalk = require('chalk')
-const fs = require('fs')
-const path = require('path')
-const mkpath = require('mkpath')
+const getConfig = require('./config')
 const generate = require('./generate')
 const { version } = require('./package.json')
 
-let component
+let component = null
 
 const program = commander
   .version(version)
   .option('-f, --functional', 'create a functional component')
   .option('-t, --type-check [system]', 'add @flow comment to script files')
-  .option('-d, --directory [dir]', 'specify a directory for the component', 'components')
+  .option('-d, --directory [dir]', 'specify a directory for the component')
   .arguments('<component>')
   .action((c) => component = c)
   .parse(process.argv)
 
-if (!component) {
+if (component == null) {
   console.error('A component’s name is required.')
   console.log(`  ${chalk.cyan(program.name())} ${chalk.green('<component>')}`)
   process.exit(1)
+} else {
+  generate(component, getConfig(program))
 }
-
-generate(component, {
-  directory: program.directory,
-  typeCheck: program.typeCheck || (
-    fs.existsSync(path.join(process.cwd(), '.flowconfig')) && 'flow'
-  ),
-  isFunctional: program.functional,
-  transform: {
-    fileName: 'paramCase',
-    component: 'pascalCase',
-  },
-})
