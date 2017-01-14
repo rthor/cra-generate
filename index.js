@@ -1,13 +1,27 @@
 #!/usr/bin/env node
 'use strict'
 
+const commander = require('commander')
+const chalk = require('chalk')
 const fs = require('fs')
 const path = require('path')
-const os = require('os')
 const mkpath = require('mkpath')
-const options = process.argv.slice(2)
+const { EOL } = require('os')
+const { version } = require('./package.json')
 
-if (options.length < 1) {
+let component
+
+const program = commander
+  .version(version)
+  .option('-f, --functional', 'create a functional component')
+  .option('-t, --use-flow', 'add @flow comment to script files')
+  .arguments('<component>')
+  .action((c) => component = c)
+  .parse(process.argv)
+
+if (!component) {
+  console.error('A component’s name is required.')
+  console.log(`  ${chalk.cyan(program.name())} ${chalk.green('<component>')}`)
   process.exit(1)
 }
 
@@ -26,11 +40,9 @@ function saveFile(name, ext, file) {
   fs.writeFile(filePath, contents, 'utf8')
 }
 
-const component = options.shift()
 const Component = captialized(component)
-
-const isPure = options.includes('--pure') || options.includes('-p')
-const useFlow = options.includes('--flow') || options.includes('-f')
+const isPure = program.functional
+const useFlow = program.useFlow
 
 const targetPath = path.resolve(process.cwd(), 'src/components/', component)
 
@@ -48,7 +60,7 @@ mkpath(targetPath, err => {
 
   Object.keys(jsFiles).forEach(file => {
     let content = jsFiles[file]
-    if (useFlow) content = `// @flow${os.EOL}${os.EOL}${content}`
+    if (useFlow) content = `// @flow${EOL}${EOL}${content}`
     saveFile(file, 'js', content)
   })
 
