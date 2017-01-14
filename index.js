@@ -28,7 +28,9 @@ if (!component) {
 
 generate(component, {
   directory: program.directory,
-  typeCheck: program.typeCheck,
+  typeCheck: program.typeCheck || (
+    fs.existsSync(path.join(process.cwd(), '.flowconfig')) && 'flow'
+  ),
   isFunctional: program.functional,
   transform: {
     fileName: 'paramCase',
