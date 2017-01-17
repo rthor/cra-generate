@@ -1,6 +1,6 @@
 {
   "name": "cra-generate",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "Scaffold react components",
   "main": "index.js",
   "repository": "rthor/cra-generate",
@@ -13,6 +13,7 @@
     "chalk": "^1.1.3",
     "change-case": "^3.0.0",
     "commander": "^2.9.0",
-    "mkpath": "^1.0.0"
+    "mkpath": "^1.0.0",
+    "nodetree": "^0.0.3"
   }
 }

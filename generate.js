@@ -6,6 +6,7 @@ const fs = require('fs')
 const mkdir = require('mkpath')
 const chalk = require('chalk')
 const path = require('path')
+const nodetree = require('nodetree')
 
 const allowedNameTransforms = {
   camelCase: true,
@@ -120,6 +121,13 @@ function generate(component, options) {
   styleFiles.forEach(style => {
     const filePath = path.join(componentPath, `${fileName}.${cssExtension}`)
     save(componentName, fileName, filePath, cssExtension, style.content)
+  })
+
+  console.log(chalk.green(`Generated ${chalk.cyan.bold(componentName)}:\n`))
+
+  nodetree(componentPath, {
+    prune: true,
+    noreport: true
   })
 }
 
