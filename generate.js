@@ -115,10 +115,10 @@ function generate(component, options) {
     const { content } = implementTypeChecking(options.typeCheck, script.content)
     const scriptName = (
       name === 'index' ? 'index' :
-      name === 'jest' ? `${fileName}.test.js` :
-        `${fileName}.js`
+      name === 'jest' ? `${fileName}.test` :
+        `${fileName}`
     )
-    const filePath = path.join(componentPath, scriptName)
+    const filePath = path.join(componentPath, `${scriptName}.js`)
     save(componentName, fileName, filePath, cssExtension, content)
   })
 
