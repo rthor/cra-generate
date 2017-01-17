@@ -32,7 +32,8 @@ Project specific settings can be added to the `package.json` file under the `cra
 | fileFormat      | `string`  | "pascalCase"  | One of: camelCase, constantCase, headerCase, paramCase, pascalCase or snakeCase. |
 | componentFormat | `string`  | "pascalCase"  | One of: camelCase, constantCase, headerCase, paramCase, pascalCase or snakeCase. |
 | typeCheck       | `undefined|string` | `undefined` | Can be set explicitly to "flow".                                                 |
-| cssExtension    | `string`  | "css"         | File extensions, with or without a dot                                       |
+| cssExtension    | `string`  | "css"         | File extensions, with or without a dot.                                      |
+| test            | `false|string` | "jest"   | Only jest for now. Can be skipped with false.                                  |
 
 ## License
 

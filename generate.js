@@ -95,19 +95,25 @@ function generate(component, options) {
 
   const componentPath = getComponentPath(componentName, options.directory, fileName)
 
-  const scriptFiles =[
+  const scriptFiles = [
     template('index.js'),
     template(options.isFunctional ? 'stateless.js' : 'stateful.js'),
   ]
+  if (options.test === 'jest') {
+    scriptFiles.push(template('jest.js'))
+  }
   const styleFiles = [template('styles.css')]
   const cssExtension = options.cssExtension.replace(/^\./, '')
 
   scriptFiles.forEach(script => {
     const { name } = path.parse(script.filePath)
     const { content } = implementTypeChecking(options.typeCheck, script.content)
-    const filePath = path.join(componentPath,
-      `${name === 'index' ? 'index' : fileName}.js`
+    const scriptName = (
+      name === 'index' ? 'index' :
+      name === 'jest' ? `${fileName}.test.js` :
+        `${fileName}.js`
     )
+    const filePath = path.join(componentPath, scriptName)
     save(componentName, fileName, filePath, cssExtension, content)
   })
 
