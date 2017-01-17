@@ -33,6 +33,10 @@ function save(componentName, fileName, filePath, cssExtension, content) {
   fs.writeFileSync(filePath, contents, 'utf8')
 }
 
+function relativePath(src) {
+  return `./${path.relative(process.cwd(), src)}`
+}
+
 function getComponentPath(componentName, directory, fileName) {
   const cwd = process.cwd()
   const root = path.join(cwd, 'src')
@@ -44,7 +48,7 @@ function getComponentPath(componentName, directory, fileName) {
   const exists = fs.existsSync(componentPath)
 
   if (exists) {
-    console.error(`Component [${componentName}] already exists at ${componentPath}`)
+    console.error(chalk.red(`Component ${chalk.bold(componentName)} already exists at ${relativePath(componentPath)}`))
     return process.exit(1)
   }
 
@@ -71,8 +75,8 @@ function implementTypeChecking(typeSystem, content) {
 
 function validTransform(key, transform) {
   if (!allowedNameTransforms.hasOwnProperty(transform)) {
-    console.log(`Invalid ${key} name transform`)
-    console.log('  allowed transform functions are:')
+    console.log(chalk.red(`Invalid ${key} name transform`))
+    console.log(chalk.red('  allowed transform functions are:'))
     Object.keys(allowedNameTransforms).forEach(trf => {
       console.log(`  - ${chalk.cyan(trf)}`)
     })
