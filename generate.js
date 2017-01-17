@@ -24,8 +24,11 @@ function template(file) {
   }
 }
 
-function save(componentName, fileName, filePath, content) {
-  const contents = content.replace(/\$Name\$/g, componentName).replace(/\$name\$/g, fileName)
+function save(componentName, fileName, filePath, cssExtension, content) {
+  const contents = content
+    .replace(/\$Name\$/g, componentName)
+    .replace(/\$name\$/g, fileName)
+    .replace(/\$css-ext\$/g, cssExtension)
   fs.writeFile(filePath, contents, 'utf8')
 }
 
@@ -98,6 +101,7 @@ function generate(component, options) {
     template(options.isFunctional ? 'stateless.js' : 'stateful.js'),
   ]
   const styleFiles = [template('styles.css')]
+  const cssExtension = options.cssExtension.replace(/^\./, '')
 
   scriptFiles.forEach(script => {
     const { name } = path.parse(script.filePath)
@@ -105,12 +109,12 @@ function generate(component, options) {
     const filePath = path.join(componentPath,
       `${name === 'index' ? 'index' : fileName}.js`
     )
-    save(componentName, fileName, filePath, content)
+    save(componentName, fileName, filePath, cssExtension, content)
   })
 
   styleFiles.forEach(style => {
-    const filePath = path.join(componentPath, 'styles.css')
-    save(componentName, fileName, filePath, style.content)
+    const filePath = path.join(componentPath, `${fileName}.${cssExtension}`)
+    save(componentName, fileName, filePath, cssExtension, style.content)
   })
 }
 

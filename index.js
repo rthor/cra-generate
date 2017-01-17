@@ -13,6 +13,7 @@ const program = commander
   .version(version)
   .option('-f, --functional', 'create a functional component')
   .option('-t, --type-check [system]', 'add @flow comment to script files')
+  .option('-c, --css-extension [extension]', 'changes the extension of generated css files')
   .option('-d, --directory [dir]', 'specify a directory for the component')
   .arguments('<component>')
   .action((c) => component = c)
