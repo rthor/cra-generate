@@ -1,6 +1,6 @@
-# Create React App Generator
+# [create-react-app](https://github.com/facebookincubator/create-react-app) Component Generator
 
-Scaffold a React component.
+Scaffold a React component for Create React App.
 
 ```bash
 Usage: cra-generate [options] <component>
