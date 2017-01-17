@@ -29,7 +29,7 @@ function save(componentName, fileName, filePath, cssExtension, content) {
     .replace(/\$Name\$/g, componentName)
     .replace(/\$name\$/g, fileName)
     .replace(/\$css-ext\$/g, cssExtension)
-  fs.writeFile(filePath, contents, 'utf8')
+  fs.writeFileSync(filePath, contents, 'utf8')
 }
 
 function getComponentPath(componentName, directory, fileName) {
@@ -93,7 +93,6 @@ function generate(component, options) {
     componentName
   } = transformNames(component, options.fileFormat, options.componentFormat)
 
-  console.log(options.fileFormat, fileName, options.componentFormat, componentName)
   const componentPath = getComponentPath(componentName, options.directory, fileName)
 
   const scriptFiles =[
