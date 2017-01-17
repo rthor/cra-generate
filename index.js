@@ -15,6 +15,7 @@ const program = commander
   .option('-t, --type-check [system]', 'add @flow comment to script files')
   .option('-c, --css-extension [extension]', 'changes the extension of generated css files')
   .option('-d, --directory [dir]', 'specify a directory for the component')
+  .option('--test [type]', 'either "jest" or "none"')
   .arguments('<component>')
   .action((c) => component = c)
   .parse(process.argv)

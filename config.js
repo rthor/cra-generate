@@ -15,12 +15,17 @@ const defaultOptions =  {
   cssExtension: 'css',
   fileFormat: 'pascalCase',
   componentFormat: 'pascalCase',
+  test: 'jest',
 }
 
 module.exports = function (program) {
   const config = Object.assign({}, defaultOptions, pkg.craGenerate || {})
 
   config.isFunctional = Boolean(program.functional)
+
+  if (program.test) {
+    config.test = program.test === 'none' ? false : program.test
+  }
 
   if (program.cssExtension) {
     config.cssExtension = program.cssExtension
