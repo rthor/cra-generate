@@ -10,6 +10,7 @@ Options:
   -h, --help                 output usage information
   -V, --version              output the version number
   -f, --functional           create a functional component
+  -c, --css-extension [ext   specify the extension of generated css files
   -d, --directory [dir]      specify a directory for the component
 ```
 
@@ -20,6 +21,7 @@ Project specific settings can be added to the `package.json` file under the `cra
 ```json
 "craGenerate": {
   "fileFormat": "paramCase",
+  "cssExtension": "scss",
   "directory": "widgets"
 }
 ```
@@ -30,6 +32,7 @@ Project specific settings can be added to the `package.json` file under the `cra
 | fileFormat      | `string`  | "pascalCase"  | One of: camelCase, constantCase, headerCase, paramCase, pascalCase or snakeCase. |
 | componentFormat | `string`  | "pascalCase"  | One of: camelCase, constantCase, headerCase, paramCase, pascalCase or snakeCase. |
 | typeCheck       | `undefined|string` | `undefined` | Can be set explicitly to "flow".                                                 |
+| cssExtension    | `string`  | "css"         | File extensions, with or without a dot                                       |
 
 ## License
 

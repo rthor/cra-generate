@@ -12,6 +12,7 @@ try {
 const defaultOptions =  {
   directory: 'components',
   typeCheck: fs.existsSync(path.join(process.cwd(), '.flowconfig')) && 'flow',
+  cssExtension: 'css',
   fileFormat: 'pascalCase',
   componentFormat: 'pascalCase',
 }
@@ -20,6 +21,10 @@ module.exports = function (program) {
   const config = Object.assign({}, defaultOptions, pkg.craGenerate || {})
 
   config.isFunctional = Boolean(program.functional)
+
+  if (program.cssExtension) {
+    config.cssExtension = program.cssExtension
+  }
 
   if (program.typeCheck) {
     config.typeCheck = program.typeCheck

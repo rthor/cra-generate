@@ -1,5 +1,5 @@
 import React from 'react'
-import './styles.css'
+import './$name$.$css-ext$'
 
 const $Name$ = ({}) => (
   <div className="$Name$"></div>
