@@ -20,7 +20,7 @@ const program = commander
   .parse(process.argv)
 
 if (component == null) {
-  console.error('A component’s name is required.')
+  console.error(chalk.red('A component’s name is required.'))
   console.log(`  ${chalk.cyan(program.name())} ${chalk.green('<component>')}`)
   process.exit(1)
 } else {
