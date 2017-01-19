@@ -9,6 +9,9 @@
   "bin": {
     "cra-generate": "./index.js"
   },
+  "engines": {
+    "node": ">=4"
+  },
   "dependencies": {
     "chalk": "^1.1.3",
     "change-case": "^3.0.0",
