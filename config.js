@@ -13,6 +13,7 @@ const defaultOptions =  {
   directory: 'components',
   typeCheck: fs.existsSync(path.join(process.cwd(), '.flowconfig')) && 'flow',
   cssExtension: 'css',
+  semi: true,
   fileFormat: 'pascalCase',
   componentFormat: 'pascalCase',
   test: 'jest',
@@ -22,6 +23,7 @@ module.exports = function (program) {
   const config = Object.assign({}, defaultOptions, pkg.craGenerate || {})
 
   config.isFunctional = Boolean(program.functional)
+  config.semi = program.semi
 
   if (program.test) {
     config.test = program.test === 'none' ? false : program.test

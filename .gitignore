@@ -8,3 +8,6 @@ node_modules
 
 # Yarn Integrity file
 .yarn-integrity
+
+# Test build outputt
+src

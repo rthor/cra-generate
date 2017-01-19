@@ -25,12 +25,15 @@ function template(file) {
   }
 }
 
-function save(componentName, fileName, filePath, cssExtension, content) {
-  const contents = content
-    .replace(/\$Name\$/g, componentName)
-    .replace(/\$name\$/g, fileName)
-    .replace(/\$css-ext\$/g, cssExtension)
-  fs.writeFileSync(filePath, contents, 'utf8')
+function replaceVars(content, componentName, fileName, cssExtension, semi) {
+  return content.replace(/\$Name\$/g, componentName)
+                .replace(/\$name\$/g, fileName)
+                .replace(/\$semi\$/g, semi ? ';' : '')
+                .replace(/\$css-ext\$/g, cssExtension)
+}
+
+function saveToFile(filePath, content) {
+  fs.writeFileSync(filePath, content, 'utf8')
 }
 
 function relativePath(src) {
@@ -97,11 +100,11 @@ function generate(component, options) {
   const fileName = transformed.fileName
   const componentName = transformed.componentName
   const componentPath = getComponentPath(componentName, options.directory, fileName)
-
   const scriptFiles = [
     template('index.js'),
     template(options.isFunctional ? 'stateless.js' : 'stateful.js'),
   ]
+
   if (options.test === 'jest') {
     scriptFiles.push(template('jest.js'))
   }
@@ -117,12 +120,12 @@ function generate(component, options) {
         `${fileName}`
     )
     const filePath = path.join(componentPath, `${scriptName}.js`)
-    save(componentName, fileName, filePath, cssExtension, content)
+    saveToFile(filePath, replaceVars(content, componentName, scriptName, cssExtension, options.semi))
   })
 
   styleFiles.forEach(style => {
     const filePath = path.join(componentPath, `${fileName}.${cssExtension}`)
-    save(componentName, fileName, filePath, cssExtension, style.content)
+    saveToFile(filePath, replaceVars(style.content, componentName, fileName, cssExtension, options.semi))
   })
 
   console.log(chalk.green(`Generated ${chalk.cyan.bold(componentName)}:\n`))
