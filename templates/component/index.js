@@ -1,1 +1,1 @@
-export { default } from './$name$'
+export { default } from './$name$'$semi$

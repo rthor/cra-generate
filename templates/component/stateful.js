@@ -1,14 +1,14 @@
-import React, { Component } from 'react'
-import './$name$.$css-ext$'
+import React, { Component } from 'react'$semi$
+import './$name$.$css-ext$'$semi$
 
 class $Name$ extends Component {
-  state = {}
+  state = {}$semi$
 
   render() {
     return (
       <div className="$Name$"></div>
-    )
+    )$semi$
   }
 }
 
-export default $Name$
+export default $Name$$semi$
