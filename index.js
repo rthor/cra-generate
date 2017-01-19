@@ -5,7 +5,7 @@ const commander = require('commander')
 const chalk = require('chalk')
 const getConfig = require('./config')
 const generate = require('./generate')
-const { version } = require('./package.json')
+const version = require('./package.json').version
 
 let component = null
 
