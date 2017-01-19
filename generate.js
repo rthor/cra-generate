@@ -1,6 +1,6 @@
 'use strict'
 
-const { EOL } = require('os')
+const EOL = require('os').EOL
 const changeCase = require('change-case')
 const fs = require('fs')
 const mkdir = require('mkpath')
@@ -93,11 +93,9 @@ function transformNames(component, fileFn, compFn) {
 }
 
 function generate(component, options) {
-  const {
-    fileName,
-    componentName
-  } = transformNames(component, options.fileFormat, options.componentFormat)
-
+  const transformed = transformNames(component, options.fileFormat, options.componentFormat)
+  const fileName = transformed.fileName
+  const componentName = transformed.componentName
   const componentPath = getComponentPath(componentName, options.directory, fileName)
 
   const scriptFiles = [
@@ -111,8 +109,8 @@ function generate(component, options) {
   const cssExtension = options.cssExtension.replace(/^\./, '')
 
   scriptFiles.forEach(script => {
-    const { name } = path.parse(script.filePath)
-    const { content } = implementTypeChecking(options.typeCheck, script.content)
+    const name = path.parse(script.filePath).name
+    const content = implementTypeChecking(options.typeCheck, script.content).content
     const scriptName = (
       name === 'index' ? 'index' :
       name === 'jest' ? `${fileName}.test` :
