@@ -1,5 +1,5 @@
 import React, { Component } from 'react'$semi$
-import './$name$.$css-ext$'$semi$
+import './$Name$.$css-ext$'$semi$
 
 class $Name$ extends Component {
   state = {}$semi$
