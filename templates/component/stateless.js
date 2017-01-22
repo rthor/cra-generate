@@ -1,7 +1,7 @@
 import React from 'react'$semi$
 import './$Name$.$css-ext$'$semi$
 
-const $Name$ = ({}) => (
+const $Name$ = () => (
   <div className="$Name$"></div>
 )$semi$
 
