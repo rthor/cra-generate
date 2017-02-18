@@ -137,18 +137,3 @@ function generate(component, options) {
 }
 
 module.exports = generate
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
