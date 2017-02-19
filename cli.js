@@ -3,7 +3,7 @@
 const commander = require('commander')
 const chalk = require('chalk')
 const getConfig = require('./config')
-const generate = require('./generate')
+const generate = require('./lib/generate')
 const version = require('./package.json').version
 
 let component = null
@@ -27,7 +27,8 @@ if (component == null) {
 }
 
 try {
-  generate(component, getConfig(program))
+  const data = generate(component, getConfig(program))
+  console.log(chalk.green(`Generated ${chalk.cyan.bold(data.componentName)}:\n`))
 } catch (error) {
   console.log(chalk.red(error.message))
 }
