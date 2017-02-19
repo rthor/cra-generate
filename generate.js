@@ -7,6 +7,7 @@ const chalk = require('chalk')
 const path = require('path')
 const nodetree = require('nodetree')
 const caseTransform = require('./lib/case-transform')
+const typeSystem = require('./lib/type-system')
 
 function template(file) {
   const filePath = path.resolve(__dirname, 'templates/component/', file)
@@ -50,23 +51,6 @@ function getComponentPath(componentName, directory, fileName) {
   return componentPath
 }
 
-function implementTypeChecking(typeSystem, content) {
-  let mutatedContent
-
-  switch (typeSystem) {
-    case 'flow':
-      mutatedContent = `// @flow${EOL}${EOL}${content}`
-      break
-    default:
-      mutatedContent = content
-      break
-  }
-
-  return {
-    content: mutatedContent,
-  }
-}
-
 module.exports = function generate(component, options) {
   const fileName = caseTransform(component, options.fileFormat)
   const componentName = caseTransform(component, options.componentFormat)
@@ -85,7 +69,7 @@ module.exports = function generate(component, options) {
 
   scriptFiles.forEach(script => {
     const name = path.parse(script.filePath).name
-    const content = implementTypeChecking(options.typeCheck, script.content).content
+    const content = typeSystem(options.typeCheck, script.content).content
     const scriptName = (
       name === 'index' ? 'index' : name === 'jest' ? `${fileName}.test` : `${fileName}`
     )
