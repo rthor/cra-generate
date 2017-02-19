@@ -1,21 +1,12 @@
 'use strict'
 
 const EOL = require('os').EOL
-const changeCase = require('change-case')
 const fs = require('fs')
 const mkdir = require('mkpath')
 const chalk = require('chalk')
 const path = require('path')
 const nodetree = require('nodetree')
-
-const allowedNameTransforms = {
-  camelCase: true,
-  constantCase: true,
-  headerCase: true,
-  paramCase: true,
-  pascalCase: true,
-  snakeCase: true,
-}
+const caseTransform = require('./lib/case-transform')
 
 function template(file) {
   const filePath = path.resolve(__dirname, 'templates/component/', file)
@@ -76,30 +67,11 @@ function implementTypeChecking(typeSystem, content) {
   }
 }
 
-function validTransform(key, transform) {
-  if (!allowedNameTransforms.hasOwnProperty(transform)) {
-    console.log(chalk.red(`Invalid ${key} name transform`))
-    console.log(chalk.red('  allowed transform functions are:'))
-    Object.keys(allowedNameTransforms).forEach(trf => {
-      console.log(`  - ${chalk.cyan(trf)}`)
-    })
-    process.exit(1)
-  }
-}
-
-function transformNames(component, fileFn, compFn) {
-  validTransform('fileName', fileFn)
-  const fileName = changeCase[fileFn](component)
-  validTransform('component', compFn)
-  const componentName = changeCase[compFn](component)
-  return { fileName, componentName }
-}
-
-function generate(component, options) {
-  const transformed = transformNames(component, options.fileFormat, options.componentFormat)
-  const fileName = transformed.fileName
-  const componentName = transformed.componentName
+module.exports = function generate(component, options) {
+  const fileName = caseTransform(component, options.fileFormat)
+  const componentName = caseTransform(component, options.componentFormat)
   const componentPath = getComponentPath(componentName, options.directory, fileName)
+
   const scriptFiles = [
     template('index.js'),
     template(options.isFunctional ? 'stateless.js' : 'stateful.js'),
@@ -115,9 +87,7 @@ function generate(component, options) {
     const name = path.parse(script.filePath).name
     const content = implementTypeChecking(options.typeCheck, script.content).content
     const scriptName = (
-      name === 'index' ? 'index' :
-      name === 'jest' ? `${fileName}.test` :
-        `${fileName}`
+      name === 'index' ? 'index' : name === 'jest' ? `${fileName}.test` : `${fileName}`
     )
     const filePath = path.join(componentPath, `${scriptName}.js`)
     saveToFile(filePath, replaceVars(content, componentName, scriptName, cssExtension, options.semi))
@@ -135,5 +105,3 @@ function generate(component, options) {
     noreport: true
   })
 }
-
-module.exports = generate
