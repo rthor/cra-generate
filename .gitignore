@@ -9,5 +9,6 @@ node_modules
 # Yarn Integrity file
 .yarn-integrity
 
-# Test build outputt
+# Test build output
 src
+coverage
