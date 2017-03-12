@@ -1,0 +1,11 @@
+exports[`typeSystem supports flow 1`] = `
+Object {
+  "content": "// @flow
+
+
+function testFunction(arg) {
+  return arg * 2
+}
+",
+}
+`;
