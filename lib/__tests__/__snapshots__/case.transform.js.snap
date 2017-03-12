@@ -1,0 +1,18 @@
+exports[`caseTransform should default to pascal case 1`] = `"TestThis"`;
+
+exports[`caseTransform should throw on undefined transformation function 1`] = `
+"Invalid transform, allowed transform functions are:
+[camelCase, constantCase, headerCase, paramCase, pascalCase, snakeCase]"
+`;
+
+exports[`caseTransform should use the correct transform function 1`] = `"testThis"`;
+
+exports[`caseTransform should use the correct transform function 2`] = `"TEST_THIS"`;
+
+exports[`caseTransform should use the correct transform function 3`] = `"Test-This"`;
+
+exports[`caseTransform should use the correct transform function 4`] = `"test-this"`;
+
+exports[`caseTransform should use the correct transform function 5`] = `"TestThis"`;
+
+exports[`caseTransform should use the correct transform function 6`] = `"test_this"`;
