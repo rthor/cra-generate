@@ -28,7 +28,7 @@ if (component == null) {
 }
 
 try {
-  const { files, componentName, componentPath } = generate(component, getConfig(program))
+  const { files, componentName, componentPath } = generate(component, program)
   console.log(chalk.green(`Generated ${chalk.cyan.bold(componentName)} at ${
     chalk.cyan(`./${path.relative(process.cwd(), componentPath)}`)
   }:`))
