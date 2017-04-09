@@ -38,7 +38,7 @@ exports[`generate should change css extension 1`] = `
 "
 `;
 
-exports[`generate should fail 1`] = `"src is not defined"`;
+exports[`generate should fail if component already exists 1`] = `"Component Test already exists at ./src/components/Test"`;
 
 exports[`generate should generate a component with default config 1`] = `"TestComponent"`;
 
