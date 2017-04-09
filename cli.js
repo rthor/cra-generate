@@ -2,6 +2,7 @@
 
 const commander = require('commander')
 const chalk = require('chalk')
+const path = require('path')
 const getConfig = require('./config')
 const generate = require('./lib/generate')
 const version = require('./package.json').version
@@ -27,8 +28,14 @@ if (component == null) {
 }
 
 try {
-  const data = generate(component, getConfig(program))
-  console.log(chalk.green(`Generated ${chalk.cyan.bold(data.componentName)}:\n`))
+  const { files, componentName, componentPath } = generate(component, getConfig(program))
+  console.log(chalk.green(`Generated ${chalk.cyan.bold(componentName)} at ${
+    chalk.cyan(`./${path.relative(process.cwd(), componentPath)}`)
+  }:`))
+  for (const file of files) {
+    console.log(' -', file.fileName)
+  }
 } catch (error) {
   console.log(chalk.red(error.message))
 }
+console.log('')
