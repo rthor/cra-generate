@@ -16,11 +16,21 @@
     "chalk": "^1.1.3",
     "change-case": "^3.0.0",
     "commander": "^2.9.0",
-    "jest": "^18.1.0",
     "mkpath": "^1.0.0",
     "nodetree": "^0.0.3"
   },
   "scripts": {
     "test": "jest"
+  },
+  "jest": {
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "/coverage/",
+      "/src/",
+      "/templates/"
+    ]
+  },
+  "devDependencies": {
+    "jest": "^19.0.2"
   }
 }

@@ -1,3 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`caseTransform should default to pascal case 1`] = `"TestThis"`;
 
 exports[`caseTransform should throw on undefined transformation function 1`] = `

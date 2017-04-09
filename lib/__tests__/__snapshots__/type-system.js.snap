@@ -1,3 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`typeSystem supports flow 1`] = `
 Object {
   "content": "// @flow
