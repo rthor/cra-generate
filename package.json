@@ -1,6 +1,6 @@
 {
   "name": "cra-generate",
-  "version": "3.0.1",
+  "version": "3.0.2",
   "description": "Scaffold react components",
   "main": "index.js",
   "repository": "rthor/cra-generate",
