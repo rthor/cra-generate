@@ -38,6 +38,8 @@ exports[`generate should change css extension 1`] = `
 "
 `;
 
+exports[`generate should fail 1`] = `"src is not defined"`;
+
 exports[`generate should generate a component with default config 1`] = `"TestComponent"`;
 
 exports[`generate should generate a component with default config 2`] = `
