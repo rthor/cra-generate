@@ -10,7 +10,7 @@
     "cra-generate": "./index.js"
   },
   "engines": {
-    "node": ">=4"
+    "node": ">=6"
   },
   "dependencies": {
     "chalk": "^1.1.3",
