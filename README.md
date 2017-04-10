@@ -1,4 +1,4 @@
-# [create-react-app](https://github.com/facebookincubator/create-react-app) Component Generator
+# React Component Generator
 
 Scaffold a React component for Create React App.
 
@@ -6,13 +6,14 @@ Scaffold a React component for Create React App.
 Usage: cra-generate [options] <component>
 
 Options:
-
-  -h, --help                 output usage information
-  -V, --version              output the version number
-  -f, --functional           create a functional component
-  -c, --css-extension [ext   specify the extension of generated css files
-  -d, --directory [dir]      specify a directory for the component
-  --no-semi                  remove semicolons
+  -h, --help                       output usage information
+  -V, --version                    output the version number
+  -f, --functional                 create a functional component
+  -t, --type-check [system]        add @flow comment to script files
+  -c, --css-extension [extension]  changes the extension of generated css files
+  -d, --directory [dir]            specify a directory for the component
+      --test [type]                either "jest" or "none"
+      --no-semi                    remove semicolons
 ```
 
 If a `.flowconfig` is present, a `// @flow` comment is prepended to all script files.
