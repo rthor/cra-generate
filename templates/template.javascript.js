@@ -1,7 +1,6 @@
 'use strict'
 const utils = require('./utils')
 
-
 module.exports = ({
   componentPath,
   componentName,
@@ -10,16 +9,19 @@ module.exports = ({
   cssExtension,
   noTest,
   isFunctional,
-}) => utils.createTemplate(componentPath, ({
-  [`${fileName}.${cssExtension}`]: `
+}) =>
+  utils.createTemplate(componentPath, {
+    [`${fileName}.${cssExtension}`]: `
 .${componentName} {}
   `,
 
-  'index.js': `
+    'index.js': `
 export { default } from './${fileName}'${semiColon}
   `,
 
-  [`${fileName}.test.js`]: noTest ? '' : `
+    [`${fileName}.test.js`]: noTest
+      ? ''
+      : `
 import React from 'react'${semiColon}
 import ReactDOM from 'react-dom'${semiColon}
 import ${componentName} from './${fileName}'${semiColon}
@@ -30,7 +32,8 @@ it('renders without crashing', () => {
 })${semiColon}
   `,
 
-  [`${fileName}.js`]: isFunctional ? `
+    [`${fileName}.js`]: isFunctional
+      ? `
 import React from 'react'${semiColon}
 import './${fileName}.${cssExtension}'${semiColon}
 
@@ -40,7 +43,8 @@ const ${componentName} = ({}) => (
 
 export default ${componentName}${semiColon}
 
-  ` : `
+  `
+      : `
 import React, { Component } from 'react'${semiColon}
 import './${fileName}.${cssExtension}'${semiColon}
 
@@ -56,4 +60,4 @@ class ${componentName} extends Component {
 
 export default ${componentName}${semiColon}
   `,
-}))
+  })
