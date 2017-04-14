@@ -9,7 +9,7 @@ try {
   pkg = require(path.resolve(process.cwd(), 'package.json'))
 } catch (err) {}
 
-const defaultOptions =  {
+const defaultOptions = {
   directory: 'components',
   typeCheck: fs.existsSync(path.join(process.cwd(), '.flowconfig')) && 'flow',
   cssExtension: 'css',
@@ -19,7 +19,7 @@ const defaultOptions =  {
   test: 'jest',
 }
 
-module.exports = function (program) {
+module.exports = function(program) {
   const config = Object.assign({}, defaultOptions, pkg.craGenerate || {})
 
   config.isFunctional = Boolean(program.functional)

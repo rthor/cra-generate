@@ -13,12 +13,15 @@ const program = commander
   .version(version)
   .option('-f, --functional', 'create a functional component')
   .option('-t, --type-check [system]', 'add @flow comment to script files')
-  .option('-c, --css-extension [extension]', 'changes the extension of generated css files')
+  .option(
+    '-c, --css-extension [extension]',
+    'changes the extension of generated css files'
+  )
   .option('-d, --directory [dir]', 'specify a directory for the component')
   .option('--no-semi', 'remove semicolons')
   .option('--test [type]', 'either "jest" or "none"')
   .arguments('<component>')
-  .action((c) => component = c)
+  .action(c => component = c)
   .parse(process.argv)
 
 if (component == null) {
@@ -29,9 +32,11 @@ if (component == null) {
 
 try {
   const { files, componentName, componentPath } = generate(component, program)
-  console.log(chalk.green(`Generated ${chalk.cyan.bold(componentName)} at ${
-    chalk.cyan(`./${path.relative(process.cwd(), componentPath)}`)
-  }:`))
+  console.log(
+    chalk.green(
+      `Generated ${chalk.cyan.bold(componentName)} at ${chalk.cyan(`./${path.relative(process.cwd(), componentPath)}`)}:`
+    )
+  )
   for (const file of files) {
     console.log(' -', file.fileName)
   }
