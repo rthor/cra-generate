@@ -18,7 +18,15 @@
     "commander": "^2.9.0",
     "mkpath": "^1.0.0"
   },
+  "lint-staged": {
+    "*.js": [
+      "prettier",
+      "git add"
+    ]
+  },
   "scripts": {
+    "prettier": "prettier --single-quote --no-semi --trailing-comma es5 --write \"{{templates,lib}/**/*.js,*.js}\"",
+    "precommit": "lint-staged",
     "test": "jest"
   },
   "jest": {
@@ -30,6 +38,9 @@
     ]
   },
   "devDependencies": {
-    "jest": "^19.0.2"
+    "husky": "^0.13.3",
+    "jest": "^19.0.2",
+    "lint-staged": "^3.4.0",
+    "prettier": "1"
   }
 }
