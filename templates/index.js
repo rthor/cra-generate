@@ -1,12 +1,12 @@
-'use strict'
+"use strict"
 
-const flowtype = require('./template.flowtype')
-const javascript = require('./template.javascript')
+const flowtype = require("./template.flowtype")
+const javascript = require("./template.javascript")
 
 module.exports = fileType => {
   switch (fileType.toLowerCase()) {
-    case 'flow':
-    case 'flowtype':
+    case "flow":
+    case "flowtype":
       return flowtype
     default:
       return javascript

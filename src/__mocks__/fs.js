@@ -1,6 +1,6 @@
-'use strict'
+"use strict"
 
-const fs = jest.genMockFromModule('fs')
+const fs = jest.genMockFromModule("fs")
 let foldersThatExists = {}
 
 fs.readFileSync = path => `Content at: [${path}]`
