@@ -4,7 +4,7 @@ const commander = require('commander')
 const chalk = require('chalk')
 const path = require('path')
 const getConfig = require('./config')
-const generate = require('./lib/generate')
+const generate = require('./src/generate')
 const version = require('./package.json').version
 
 let component = null

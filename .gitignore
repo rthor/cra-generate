@@ -10,5 +10,5 @@ node_modules
 .yarn-integrity
 
 # Test build output
-src
+lib
 coverage

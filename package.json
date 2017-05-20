@@ -25,6 +25,8 @@
     ]
   },
   "scripts": {
+    "build": "flow-remove-types src/ -d lib/",
+    "prepublish": "yarn run build",
     "prettier": "prettier --single-quote --no-semi --trailing-comma es5 --write \"{{templates,lib}/**/*.js,*.js}\"",
     "precommit": "lint-staged",
     "test": "jest"
@@ -33,11 +35,13 @@
     "testPathIgnorePatterns": [
       "/node_modules/",
       "/coverage/",
-      "/src/",
+      "/lib/",
       "/templates/"
     ]
   },
   "devDependencies": {
+    "flow-bin": "^0.46.0",
+    "flow-remove-types": "^1.2.1",
     "husky": "^0.13.3",
     "jest": "^19.0.2",
     "lint-staged": "^3.4.0",
