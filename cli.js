@@ -1,32 +1,32 @@
-'use strict'
+"use strict"
 
-const commander = require('commander')
-const chalk = require('chalk')
-const path = require('path')
-const getConfig = require('./config')
-const generate = require('./src/generate')
-const version = require('./package.json').version
+const commander = require("commander")
+const chalk = require("chalk")
+const path = require("path")
+const getConfig = require("./config")
+const generate = require("./src/generate")
+const version = require("./package.json").version
 
 let component = null
 
 const program = commander
   .version(version)
-  .option('-f, --functional', 'create a functional component')
-  .option('-t, --type-check [system]', 'add @flow comment to script files')
+  .option("-f, --functional", "create a functional component")
+  .option("-t, --type-check [system]", "add @flow comment to script files")
   .option(
-    '-c, --css-extension [extension]',
-    'changes the extension of generated css files'
+    "-c, --css-extension [extension]",
+    "changes the extension of generated css files"
   )
-  .option('-d, --directory [dir]', 'specify a directory for the component')
-  .option('--no-semi', 'remove semicolons')
-  .option('--test [type]', 'either "jest" or "none"')
-  .arguments('<component>')
-  .action(c => component = c)
+  .option("-d, --directory [dir]", "specify a directory for the component")
+  .option("--no-semi", "remove semicolons")
+  .option("--test [type]", 'either "jest" or "none"')
+  .arguments("<component>")
+  .action(c => (component = c))
   .parse(process.argv)
 
 if (component == null) {
-  console.error(chalk.red('A component’s name is required.'))
-  console.log(`  ${chalk.cyan(program.name())} ${chalk.green('<component>')}`)
+  console.error(chalk.red("A component’s name is required."))
+  console.log(`  ${chalk.cyan(program.name())} ${chalk.green("<component>")}`)
   process.exit(1)
 }
 
@@ -38,9 +38,9 @@ try {
     )
   )
   for (const file of files) {
-    console.log(' -', file.fileName)
+    console.log(" -", file.fileName)
   }
 } catch (error) {
   console.log(chalk.red(error.message))
 }
-console.log('')
+console.log("")

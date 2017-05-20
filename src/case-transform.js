@@ -1,7 +1,9 @@
-'use strict'
+// @flow
 
-const chalk = require('chalk')
-const changeCase = require('change-case')
+"use strict"
+
+const chalk = require("chalk")
+const changeCase = require("change-case")
 
 const allowedNameTransforms = {
   camelCase: true,
@@ -12,16 +14,12 @@ const allowedNameTransforms = {
   snakeCase: true,
 }
 
-/**
- * @param {String} str
- * @param {String} transformFunction
- */
-function caseTransform(str, transformFunction = 'pascalCase') {
+function caseTransform(str: string, transformFunction: string = "pascalCase") {
   if (!allowedNameTransforms.hasOwnProperty(transformFunction)) {
     const message =
-      'Invalid transform, allowed transform functions are:\n[' +
-      Object.keys(allowedNameTransforms).join(', ') +
-      ']'
+      "Invalid transform, allowed transform functions are:\n[" +
+      Object.keys(allowedNameTransforms).join(", ") +
+      "]"
     throw new Error(message)
   }
   return changeCase[transformFunction](str)

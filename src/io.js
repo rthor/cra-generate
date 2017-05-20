@@ -1,16 +1,22 @@
-'use strict'
+// @flow
 
-const fs = require('fs')
-const mkdir = require('mkpath')
-const path = require('path')
+"use strict"
 
-function writeToDisk(filePath, content) {
-  fs.writeFileSync(filePath, content, 'utf8')
+const fs = require("fs")
+const mkdir = require("mkpath")
+const path = require("path")
+
+function writeToDisk(filePath: string, content: string) {
+  fs.writeFileSync(filePath, content, "utf8")
 }
 
-function getComponentPath(componentName, directory, fileName) {
+function getComponentPath(
+  componentName: string,
+  directory: string,
+  fileName: string
+) {
   const cwd = process.cwd()
-  const root = path.join(cwd, 'src')
+  const root = path.join(cwd, "src")
   mkdir.sync(root)
 
   const dir = path.join(root, directory)

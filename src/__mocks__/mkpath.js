@@ -1,6 +1,6 @@
-'use strict'
+"use strict"
 
-const mkpath = jest.genMockFromModule('mkpath')
+const mkpath = jest.genMockFromModule("mkpath")
 
 mkpath.sync = function(path) {
   return path

@@ -1,22 +1,22 @@
-'use strict'
+"use strict"
 
-const fs = require('fs')
-const path = require('path')
+const fs = require("fs")
+const path = require("path")
 
 let pkg = {}
 
 try {
-  pkg = require(path.resolve(process.cwd(), 'package.json'))
+  pkg = require(path.resolve(process.cwd(), "package.json"))
 } catch (err) {}
 
 const defaultOptions = {
-  directory: 'components',
-  typeCheck: fs.existsSync(path.join(process.cwd(), '.flowconfig')) && 'flow',
-  cssExtension: 'css',
+  directory: "components",
+  typeCheck: fs.existsSync(path.join(process.cwd(), ".flowconfig")) && "flow",
+  cssExtension: "css",
   semi: true,
-  fileFormat: 'pascalCase',
-  componentFormat: 'pascalCase',
-  test: 'jest',
+  fileFormat: "pascalCase",
+  componentFormat: "pascalCase",
+  test: "jest",
 }
 
 module.exports = function(program) {
@@ -26,7 +26,7 @@ module.exports = function(program) {
   config.semi = program.semi
 
   if (program.test) {
-    config.test = program.test === 'none' ? false : program.test
+    config.test = program.test === "none" ? false : program.test
   }
 
   if (program.cssExtension) {

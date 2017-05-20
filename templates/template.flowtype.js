@@ -1,7 +1,7 @@
-'use strict'
+"use strict"
 
-const javascript = require('./template.javascript')
-const eol = require('os').EOL
+const javascript = require("./template.javascript")
+const eol = require("os").EOL
 const jsRegex = /\.js$/i
 
 module.exports = config =>

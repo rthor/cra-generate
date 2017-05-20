@@ -1,5 +1,5 @@
-'use strict'
-const utils = require('./utils')
+"use strict"
+const utils = require("./utils")
 
 module.exports = ({
   componentPath,
@@ -15,12 +15,12 @@ module.exports = ({
 .${componentName} {}
   `,
 
-    'index.js': `
+    "index.js": `
 export { default } from './${fileName}'${semiColon}
   `,
 
     [`${fileName}.test.js`]: noTest
-      ? ''
+      ? ""
       : `
 import React from 'react'${semiColon}
 import ReactDOM from 'react-dom'${semiColon}
