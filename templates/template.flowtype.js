@@ -7,7 +7,7 @@ const jsRegex = /\.js$/i
 module.exports = config =>
   javascript(config).map(file => {
     if (jsRegex.test(file.fileName)) {
-      file.content = `// @flow${eol}${eol}${file.content}`
+      file.content = `// @${""}flow${eol}${eol}${file.content}`
     }
     return file
   })

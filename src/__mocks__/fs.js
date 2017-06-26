@@ -6,7 +6,7 @@ let foldersThatExists = {}
 fs.readFileSync = path => `Content at: [${path}]`
 
 fs.existsSync = path => {
-  return foldersThatExists[path] != null
+  return path in foldersThatExists
 }
 
 fs.writeFileSync = function(filePath, content, encoding) {}

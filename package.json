@@ -32,6 +32,9 @@
     "test": "jest"
   },
   "jest": {
+    "transform": {
+      "\\.js$": "./jest-transform"
+    },
     "testPathIgnorePatterns": [
       "/node_modules/",
       "/coverage/",
