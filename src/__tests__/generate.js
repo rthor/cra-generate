@@ -1,10 +1,10 @@
 "use strict"
 
-const generate = require("../generate")
-const path = require("path")
-
 jest.mock("fs")
 jest.mock("mkpath")
+
+const generate = require("../generate")
+const path = require("path")
 
 describe("generate", () => {
   it("should fail if component already exists", () => {
