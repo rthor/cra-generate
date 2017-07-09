@@ -14,6 +14,7 @@ const defaultOptions = {
   typeCheck: fs.existsSync(path.join(process.cwd(), ".flowconfig")) && "flow",
   cssExtension: "css",
   semi: true,
+  type: "stateful",
   fileFormat: "pascalCase",
   componentFormat: "pascalCase",
   test: "jest",
@@ -22,7 +23,8 @@ const defaultOptions = {
 module.exports = function(program) {
   const config = Object.assign({}, defaultOptions, pkg.craGenerate || {})
 
-  config.isFunctional = Boolean(program.functional)
+  config.isFunctional =
+    (config.type === "functional" && !program.stateful) || program.functional
 
   if (program.test) {
     config.test = program.test === "none" ? false : program.test
