@@ -33,14 +33,9 @@
   },
   "jest": {
     "transform": {
-      "\\.js$": "./jest-transform"
+      "\\.js$": "../jest-transform"
     },
-    "testPathIgnorePatterns": [
-      "/node_modules/",
-      "/coverage/",
-      "/lib/",
-      "/templates/"
-    ]
+    "rootDir": "src"
   },
   "devDependencies": {
     "flow-bin": "^0.46.0",
