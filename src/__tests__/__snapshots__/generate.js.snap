@@ -46,44 +46,44 @@ exports[`generate should generate a component with default config 2`] = `
 Array [
   ".TestComponent {}
 ",
-  "export { default } from './TestComponent'
+  "export { default } from './TestComponent';
 ",
-  "import React from 'react'
-import ReactDOM from 'react-dom'
-import TestComponent from './TestComponent'
+  "import React from 'react';
+import ReactDOM from 'react-dom';
+import TestComponent from './TestComponent';
 
 it('renders without crashing', () => {
-  const div = document.createElement('div')
-  ReactDOM.render(<TestComponent />, div)
-})
+  const div = document.createElement('div');
+  ReactDOM.render(<TestComponent />, div);
+});
 ",
-  "import React, { Component } from 'react'
-import './TestComponent.css'
+  "import React, { Component } from 'react';
+import './TestComponent.css';
 
 class TestComponent extends Component {
-  state = {}
+  state = {};
 
   render() {
     return (
       <div className=\\"TestComponent\\"></div>
-    )
+    );
   }
 }
 
-export default TestComponent
+export default TestComponent;
 ",
 ]
 `;
 
 exports[`generate should generate functional components 1`] = `
-"import React from 'react'
-import './TestComponent.css'
+"import React from 'react';
+import './TestComponent.css';
 
 const TestComponent = ({}) => (
   <div className=\\"TestComponent\\"></div>
-)
+);
 
-export default TestComponent
+export default TestComponent;
 "
 `;
 
@@ -91,35 +91,35 @@ exports[`generate should use flow type 1`] = `
 Array [
   "// @flow
 
-export { default } from './T'
+export { default } from './T';
 ",
   "// @flow
 
-import React from 'react'
-import ReactDOM from 'react-dom'
-import T from './T'
+import React from 'react';
+import ReactDOM from 'react-dom';
+import T from './T';
 
 it('renders without crashing', () => {
-  const div = document.createElement('div')
-  ReactDOM.render(<T />, div)
-})
+  const div = document.createElement('div');
+  ReactDOM.render(<T />, div);
+});
 ",
   "// @flow
 
-import React, { Component } from 'react'
-import './T.css'
+import React, { Component } from 'react';
+import './T.css';
 
 class T extends Component {
-  state = {}
+  state = {};
 
   render() {
     return (
       <div className=\\"T\\"></div>
-    )
+    );
   }
 }
 
-export default T
+export default T;
 ",
 ]
 `;

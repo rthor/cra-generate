@@ -17,7 +17,6 @@ const program = commander
     "changes the extension of generated css files"
   )
   .option("-d, --directory [dir]", "specify a directory for the component")
-  .option("--no-semi", "remove semicolons")
   .option("--test [type]", 'either "jest" or "none"')
   .arguments("<component>")
   .action(c => (component = c))
