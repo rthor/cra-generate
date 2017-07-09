@@ -11,6 +11,7 @@ let component = null
 const program = commander
   .version(version)
   .option("-f, --functional", "create a functional component")
+  .option("-s, --stateful", "create a stateful class component")
   .option("-t, --type-check [system]", "add @flow comment to script files")
   .option(
     "-c, --css-extension [extension]",
