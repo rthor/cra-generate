@@ -6,4 +6,9 @@ jobs:
        - image: circleci/node:6
      steps:
        - checkout
-       - run: yarn test
+       - run:
+          name: Install dependencies
+          command: yarn
+       - run:
+          name: Test
+          command: yarn test
