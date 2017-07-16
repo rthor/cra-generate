@@ -18,4 +18,4 @@ if (~~version.split(".")[0] < 6) {
   process.exit(1)
 }
 
-require("./cli")
+require("./lib/src/cli")

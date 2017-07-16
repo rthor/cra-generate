@@ -1,13 +1,9 @@
-// @flow
+import caseTransform = require('./case-transform')
+import getConfig = require('./config')
+import * as templates from '../templates'
+import * as io from './io'
 
-"use strict"
-
-const caseTransform = require("./case-transform")
-const getConfig = require("../config")
-const templates = require("../templates")
-const io = require("./io")
-
-module.exports = function generate(component: string, options = {}) {
+export = function generate(component: string, options: any = {}) {
   options = getConfig(options)
 
   const fileName = caseTransform(component, options.fileFormat)
@@ -18,14 +14,14 @@ module.exports = function generate(component: string, options = {}) {
     fileName
   )
 
-  const files = templates(options.typeCheck || "")({
+  const files = templates(options.typeCheck || '')({
     fileName,
     componentName,
     componentPath,
     noTest: !options.test,
     isFunctional: options.isFunctional,
-    semiColon: options.semi ? ";" : "",
-    cssExtension: options.cssExtension.replace(/^\./, ""),
+    semiColon: options.semi ? ';' : '',
+    cssExtension: options.cssExtension.replace(/^\./, ''),
   })
 
   for (const file of files) {

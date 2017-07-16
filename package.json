@@ -25,24 +25,24 @@
     ]
   },
   "scripts": {
-    "build": "flow-remove-types src/ -d lib/",
+    "build": "tsc --project tsconfig.json",
     "prepublish": "yarn run build",
     "prettier": "prettier --parser \"flow\" --no-semi --trailing-comma es5 --write \"{{templates,src}/**/*.js,*.js}\"",
     "precommit": "lint-staged",
-    "test": "jest"
+    "test": "yarn run build && jest"
   },
   "jest": {
-    "transform": {
-      "\\.js$": "../jest-transform"
-    },
-    "rootDir": "src"
+    "rootDir": "lib"
   },
   "devDependencies": {
-    "flow-bin": "^0.46.0",
-    "flow-remove-types": "^1.2.1",
+    "@types/chalk": "^0.4.31",
+    "@types/jest": "^20.0.2",
+    "@types/mkpath": "^0.1.29",
+    "@types/node": "^8.0.13",
     "husky": "^0.13.3",
-    "jest": "^19.0.2",
+    "jest": "^20.0.4",
     "lint-staged": "^3.4.0",
-    "prettier": "^1.3.1"
+    "prettier": "^1.3.1",
+    "typescript": "^2.4.1"
   }
 }
