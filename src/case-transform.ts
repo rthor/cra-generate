@@ -1,5 +1,5 @@
-import * as chalk from 'chalk'
-import * as changeCase from 'change-case'
+import * as chalk from "chalk"
+import * as changeCase from "change-case"
 
 const allowedNameTransforms = {
   camelCase: true,
@@ -12,13 +12,13 @@ const allowedNameTransforms = {
 
 export = function caseTransform(
   str: string,
-  transformFunction: string = 'pascalCase'
+  transformFunction: string = "pascalCase"
 ) {
   if (!allowedNameTransforms.hasOwnProperty(transformFunction)) {
     const message =
-      'Invalid transform, allowed transform functions are:\n[' +
-      Object.keys(allowedNameTransforms).join(', ') +
-      ']'
+      "Invalid transform, allowed transform functions are:\n[" +
+      Object.keys(allowedNameTransforms).join(", ") +
+      "]"
     throw new Error(message)
   }
   return changeCase[transformFunction](str)

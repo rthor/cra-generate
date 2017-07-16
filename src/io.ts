@@ -1,9 +1,9 @@
-import * as fs from 'fs'
-import * as mkdir from 'mkpath'
-import * as path from 'path'
+import * as fs from "fs"
+import * as mkdir from "mkpath"
+import * as path from "path"
 
 export function writeToDisk(filePath: string, content: string) {
-  fs.writeFileSync(filePath, content, 'utf8')
+  fs.writeFileSync(filePath, content, "utf8")
 }
 
 export function getComponentPath(
@@ -12,7 +12,7 @@ export function getComponentPath(
   fileName: string
 ) {
   const cwd = process.cwd()
-  const root = path.join(cwd, 'src')
+  const root = path.join(cwd, "src")
   mkdir.sync(root)
 
   const dir = path.join(root, directory)

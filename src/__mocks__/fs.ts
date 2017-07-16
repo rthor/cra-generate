@@ -9,7 +9,7 @@ interface foldersMap_t {
   [directory: string]: boolean
 }
 
-const fs: fs_t = jest.genMockFromModule('fs')
+const fs: fs_t = jest.genMockFromModule("fs")
 let foldersThatExists: foldersMap_t = {}
 
 fs.readFileSync = path => `Content at: [${path}]`

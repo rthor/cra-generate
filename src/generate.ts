@@ -1,7 +1,7 @@
-import caseTransform = require('./case-transform')
-import getConfig = require('./config')
-import * as templates from '../templates'
-import * as io from './io'
+import caseTransform = require("./case-transform")
+import getConfig = require("./config")
+import * as templates from "../templates"
+import * as io from "./io"
 
 export = function generate(component: string, options: any = {}) {
   options = getConfig(options)
@@ -14,14 +14,14 @@ export = function generate(component: string, options: any = {}) {
     fileName
   )
 
-  const files = templates(options.typeCheck || '')({
+  const files = templates(options.typeCheck || "")({
     fileName,
     componentName,
     componentPath,
     noTest: !options.test,
     isFunctional: options.isFunctional,
-    semiColon: options.semi ? ';' : '',
-    cssExtension: options.cssExtension.replace(/^\./, ''),
+    semiColon: options.semi ? ";" : "",
+    cssExtension: options.cssExtension.replace(/^\./, ""),
   })
 
   for (const file of files) {
