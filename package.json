@@ -19,7 +19,7 @@
     "mkpath": "^1.0.0"
   },
   "lint-staged": {
-    "*.js": ["prettier", "git add"]
+    "*.ts": ["prettier", "git add"]
   },
   "scripts": {
     "build": "tsc --project tsconfig.json",
