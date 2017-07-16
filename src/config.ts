@@ -1,9 +1,7 @@
-"use strict"
+import * as fs from "fs"
+import * as path from "path"
 
-const fs = require("fs")
-const path = require("path")
-
-let pkg = {}
+let pkg: any = {}
 
 try {
   pkg = require(path.resolve(process.cwd(), "package.json"))
@@ -13,6 +11,7 @@ const defaultOptions = {
   directory: "components",
   typeCheck: fs.existsSync(path.join(process.cwd(), ".flowconfig")) && "flow",
   cssExtension: "css",
+  isFunctional: false,
   semi: true,
   type: "stateful",
   fileFormat: "pascalCase",
@@ -20,8 +19,13 @@ const defaultOptions = {
   test: "jest",
 }
 
-module.exports = function(program) {
-  const config = Object.assign({}, defaultOptions, pkg.craGenerate || {})
+type options_t = typeof defaultOptions
+
+export = (program: any): options_t => {
+  const config: options_t = {
+    ...defaultOptions,
+    ...pkg.craGenerate || {},
+  }
 
   config.isFunctional =
     (config.type === "functional" && !program.stateful) || program.functional

@@ -1,9 +1,5 @@
-// @flow
-
-"use strict"
-
-const chalk = require("chalk")
-const changeCase = require("change-case")
+import * as chalk from "chalk"
+import * as changeCase from "change-case"
 
 const allowedNameTransforms = {
   camelCase: true,
@@ -14,7 +10,10 @@ const allowedNameTransforms = {
   snakeCase: true,
 }
 
-function caseTransform(str: string, transformFunction: string = "pascalCase") {
+export = function caseTransform(
+  str: string,
+  transformFunction: string = "pascalCase"
+) {
   if (!allowedNameTransforms.hasOwnProperty(transformFunction)) {
     const message =
       "Invalid transform, allowed transform functions are:\n[" +
@@ -24,5 +23,3 @@ function caseTransform(str: string, transformFunction: string = "pascalCase") {
   }
   return changeCase[transformFunction](str)
 }
-
-module.exports = caseTransform

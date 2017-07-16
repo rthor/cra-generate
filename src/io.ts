@@ -1,16 +1,12 @@
-// @flow
+import * as fs from "fs"
+import * as mkdir from "mkpath"
+import * as path from "path"
 
-"use strict"
-
-const fs = require("fs")
-const mkdir = require("mkpath")
-const path = require("path")
-
-function writeToDisk(filePath: string, content: string) {
+export function writeToDisk(filePath: string, content: string) {
   fs.writeFileSync(filePath, content, "utf8")
 }
 
-function getComponentPath(
+export function getComponentPath(
   componentName: string,
   directory: string,
   fileName: string
@@ -25,15 +21,13 @@ function getComponentPath(
   const componentPath = path.join(dir, fileName)
   if (fs.existsSync(componentPath)) {
     throw new Error(
-      `Component ${componentName} already exists at ${`./${path.relative(process.cwd(), componentPath)}`}`
+      `Component ${componentName} already exists at ${`./${path.relative(
+        process.cwd(),
+        componentPath
+      )}`}`
     )
   }
 
   mkdir.sync(componentPath)
   return componentPath
-}
-
-module.exports = {
-  getComponentPath,
-  writeToDisk,
 }

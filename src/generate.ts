@@ -1,13 +1,9 @@
-// @flow
+import caseTransform = require("./case-transform")
+import getConfig = require("./config")
+import * as templates from "../templates"
+import * as io from "./io"
 
-"use strict"
-
-const caseTransform = require("./case-transform")
-const getConfig = require("../config")
-const templates = require("../templates")
-const io = require("./io")
-
-module.exports = function generate(component: string, options = {}) {
+export = function generate(component: string, options: any = {}) {
   options = getConfig(options)
 
   const fileName = caseTransform(component, options.fileFormat)

@@ -1,6 +1,4 @@
-"use strict"
-
-const caseTransform = require("../case-transform")
+import caseTransform = require("../case-transform")
 
 describe("caseTransform", () => {
   it("should throw on undefined transformation function", () => {

@@ -1,10 +1,8 @@
-"use strict"
-
 jest.mock("fs")
 jest.mock("mkpath")
 
-const generate = require("../generate")
-const path = require("path")
+import generate = require("../generate")
+import * as path from "path"
 
 describe("generate", () => {
   it("should fail if component already exists", () => {
@@ -23,7 +21,7 @@ describe("generate", () => {
   })
 
   it("should generate functional components", () => {
-    const data = generate("test-component", { functional: true })
+    const data: any = generate("test-component", { functional: true })
     const file = data.files.find(
       ({ fileName }) => fileName === "TestComponent.js"
     )
@@ -31,12 +29,12 @@ describe("generate", () => {
   })
 
   it("should add semi colons", () => {
-    const data = generate("test-component", { semi: true })
+    const data: any = generate("test-component", { semi: true })
     expect(data.files.map(({ content }) => content)).toMatchSnapshot()
   })
 
   it("should change css extension", () => {
-    const data = generate("t", { cssExtension: "sass" })
+    const data: any = generate("t", { cssExtension: "sass" })
     expect(
       data.files.find(({ fileName }) => fileName === "T.sass").content
     ).toMatchSnapshot()
@@ -48,7 +46,7 @@ describe("generate", () => {
   })
 
   it("should use flow type", () => {
-    const data = generate("t", { typeCheck: "flow" })
+    const data: any = generate("t", { typeCheck: "flow" })
     const scripts = data.files
       .filter(({ fileName }) => fileName.includes(".js", -1))
       .map(({ content }) => content)

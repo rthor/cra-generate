@@ -1,0 +1,12 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "types": ["node", "jest"],
+    "module": "commonjs",
+    "noImplicitAny": false,
+    "allowJs": true,
+    "outDir": "lib"
+  },
+  "include": ["typings.d.ts", "src/**/*"],
+  "exclude": ["lib"]
+}
