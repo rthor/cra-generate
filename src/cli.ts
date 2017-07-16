@@ -2,11 +2,12 @@ import * as chalk from 'chalk'
 import * as path from 'path'
 import commander = require('commander')
 import generate = require('./generate')
+import pkg = require('../../package.json')
 
 let component = null
 
 const program = commander
-  .version('4.0.0')
+  .version(pkg.version)
   .option('-f, --functional', 'create a functional component')
   .option('-s, --stateful', 'create a stateful class component')
   .option('-t, --type-check [system]', 'add @flow comment to script files')
