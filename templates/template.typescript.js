@@ -53,7 +53,7 @@ class ${componentName} extends React.Component<{}, {}> {
 
   public render() {
     return (
-      <div className="${componentName}" />
+      <div className="${componentName}"></div>
     )${semiColon}
   }
 }
