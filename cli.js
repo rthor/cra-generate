@@ -14,7 +14,7 @@ const program = commander
   .option("-s, --stateful", "create a stateful class component")
   .option(
     "-t, --type-check [system]",
-    "add @flow or comment to script files or create typescript files"
+    'either "flow", "flowtype" or "typescript"'
   )
   .option(
     "-c, --css-extension [extension]",
