@@ -12,7 +12,10 @@ const program = commander
   .version(version)
   .option("-f, --functional", "create a functional component")
   .option("-s, --stateful", "create a stateful class component")
-  .option("-t, --type-check [system]", "add @flow comment to script files")
+  .option(
+    "-t, --type-check [system]",
+    'either "flow", "flowtype" or "typescript"'
+  )
   .option(
     "-c, --css-extension [extension]",
     "changes the extension of generated css files"

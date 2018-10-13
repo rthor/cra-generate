@@ -123,3 +123,34 @@ export default T;
 ",
 ]
 `;
+
+exports[`generate should use typescript 1`] = `
+Array [
+  "export { default } from './T';
+",
+  "import * as React from 'react';
+import * as ReactDOM from 'react-dom';
+import T from './T';
+
+it('renders without crashing', () => {
+  const div = document.createElement('div');
+  ReactDOM.render(<T />, div);
+});
+",
+  "import * as React from 'react';
+import './T.css';
+
+class T extends React.Component<{}, {}> {
+  public state = {};
+
+  public render() {
+    return (
+      <div className=\\"T\\" />
+    );
+  }
+}
+
+export default T;
+",
+]
+`;

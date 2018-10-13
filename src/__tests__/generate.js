@@ -55,6 +55,15 @@ describe("generate", () => {
     expect(scripts).toMatchSnapshot()
   })
 
+  it("should use typescript", () => {
+    const data = generate("t", { typeCheck: "typescript" })
+
+    const scripts = data.files
+      .filter(({ fileName }) => fileName.includes(".ts", -1))
+      .map(({ content }) => content)
+    expect(scripts).toMatchSnapshot()
+  })
+
   it("should use customized directory", () => {
     const data = generate("t", { directory: "foo" })
     expect(data.componentPath).toContain("/src/foo/T")
