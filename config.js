@@ -9,9 +9,21 @@ try {
   pkg = require(path.resolve(process.cwd(), "package.json"))
 } catch (err) {}
 
+const getTypeCheck = () => {
+  const hasFlow = fs.existsSync(path.join(process.cwd(), ".flowconfig"))
+  const hasTypescript = fs.existsSync(path.join(process.cwd(), "tsconfig.json"))
+  if (hasFlow) {
+    return "flow"
+  } else if (hasTypescript) {
+    return "typescript"
+  }
+
+  return false
+}
+
 const defaultOptions = {
   directory: "components",
-  typeCheck: fs.existsSync(path.join(process.cwd(), ".flowconfig")) && "flow",
+  typeCheck: getTypeCheck(),
   cssExtension: "css",
   semi: true,
   type: "stateful",
@@ -34,7 +46,7 @@ module.exports = function(program) {
     config.cssExtension = program.cssExtension
   }
 
-  if (program.typeCheck) {
+  if (program.typeCheck && typeof program.typeCheck === "string") {
     config.typeCheck = program.typeCheck
   }
 
